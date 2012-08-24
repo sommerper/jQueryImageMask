@@ -38,7 +38,7 @@ Mask image: 9.2 kb
 
 Combined: __33.6kb__
 
-Png image with transparancy __584.4 kb__
+Png image with transparency __584.4 kb__
 
 
 
