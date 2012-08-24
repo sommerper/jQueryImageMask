@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>ImageAlpha</title>
+		<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+		<script type="text/javascript" src="js/jquery.imagemask.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		<style>
+			.grad
+			{
+				background-image: linear-gradient(bottom, rgb(116,153,146) 0%, rgb(180,207,194) 58%);
+				background-image: -o-linear-gradient(bottom, rgb(116,153,146) 0%, rgb(180,207,194) 58%);
+				background-image: -moz-linear-gradient(bottom, rgb(116,153,146) 0%, rgb(180,207,194) 58%);
+				background-image: -webkit-linear-gradient(bottom, rgb(116,153,146) 0%, rgb(180,207,194) 58%);
+				background-image: -ms-linear-gradient(bottom, rgb(116,153,146) 0%, rgb(180,207,194) 58%);
+
+				background-image: -webkit-gradient(
+					linear,
+					left bottom,
+					left top,
+					color-stop(0, rgb(116,153,146)),
+					color-stop(0.58, rgb(180,207,194))
+				);
+
+			}
+		</style>
+	</head>
+	<body class="grad">
+		<div class="container">
+			<img src="images/bird.png"/>
+			<img src="images/bird_matte.jpg" data-mask="images/bird_alpha.jpg"/>
+		</div>
+	</body>
+</html>
