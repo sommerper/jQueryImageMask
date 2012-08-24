@@ -32,11 +32,11 @@ It requires a bit more work because one has to save two images. It also helps to
 
 The example images included show a reduction in file size of __82.6%__.
 
-Normal image: 24.4bk
+Normal image: 24.4 kb
 
 Mask image: 9.2 kb
 
-Combined: __33.6kb__
+Combined: __33.6 kb__
 
 Png image with transparency __584.4 kb__
 
