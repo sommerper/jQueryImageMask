@@ -11,10 +11,6 @@
 	{
 		this.element = element;
 
-		// jQuery has an extend method which merges the contents of two or
-		// more objects, storing the result in the first object. The first object
-		// is generally empty as we don't want to alter the default options for
-		// future instances of the plugin
 		this.options = $.extend({}, defaults, options);
 
 		this._defaults = defaults;
@@ -25,21 +21,14 @@
 
 	Plugin.prototype.init = function ()
 	{
-
-		// Place initialization logic here
-		// You already have access to the DOM element and the options via the instance,
-		// e.g., this.element and this.options
 		$(this.element).find("img[data-mask]").each(function (i, ele)
 		{
 			var imgNormal = new Image();
 			var imgAlpha = new Image();
 			createImgageAlpha(ele, imgNormal, imgAlpha);
-			//$(".textformat").append("<li>" + $(ele).attr("alt") + "</li>");
 		});
 	};
 
-	// A really lightweight plugin wrapper around the constructor,
-	// preventing against multiple instantiations
 	$.fn[pluginName] = function (options)
 	{
 		return this.each(function ()
@@ -53,45 +42,28 @@
 
 	var createImgageAlpha = function (ele, imgNormal, imgAlpha)
 	{
-
-
-		// wrap our new image in jQuery, then:
 		$(imgNormal)
-			// once the image has loaded, execute this code
 			.load(function ()
 			{
 				normalLoaded(ele, imgNormal, imgAlpha);
 			})
-
-			// if there was an error loading the image, react accordingly
 			.error(function ()
 			{
-				// notify the user that the image could not be loaded
 			})
-
-			// *finally*, set the src attribute of the new image to our image
 			.attr('src', $(ele).attr("src"));
-
 		$(ele).attr("src", "")
 	}
 
 	var normalLoaded = function (ele, imgNormal, imgAlpha)
 	{
-
 		$(imgAlpha)
-			// once the image has loaded, execute this code
 			.load(function ()
 			{
 				alphaLoaded(ele, imgNormal, imgAlpha);
 			})
-
-			// if there was an error loading the image, react accordingly
 			.error(function ()
 			{
-				// notify the user that the image could not be loaded
 			})
-
-			// *finally*, set the src attribute of the new image to our image
 			.attr('src', $(ele).attr("data-mask"));
 	}
 
@@ -104,7 +76,6 @@
 	{
 		var cWidth = normalImage.width;
 		var cHeight = normalImage.height;
-		//var can = document.getElementById('mycanvas');
 		var can = document.createElement('canvas');
 		can.width = cWidth;
 		can.height = cHeight;
@@ -130,11 +101,7 @@
 
 		for (var i = 0, n = pixNormal.length; i < n; i += 4)
 		{
-//		pixNormal[i  ] = 255 - pixNormal[i  ]; // red
-//		pixNormal[i+1] = 255 - pixNormal[i+1]; // green
-//		pixNormal[i+2] = 255 - pixNormal[i+2]; // blue
 			pixNormal[i + 3] = (pixAlpha[i] + pixAlpha[i + 1] + pixAlpha[i + 2]) / 3; // blue
-			// i+3 is alpha (the fourth element)
 		}
 		ctx.putImageData(imgdNormal, 0, 0);
 		var dataUrl = can.toDataURL();
