@@ -23,6 +23,10 @@ and it will find all images with a data-mask attribute in the image container.
 
 It combines the two images using canvas and replaces the original image with the generated one.
 
+## Example
+
+![Example Image](exampleimage.jpg "Example Image")
+
 ## Is it worth it?
 It requires a bit more work because one has to save to images. It also helps to have a solid background on the original image for better compression. There may be circumstances where a normal png with transparency is preffered, but with larger photos it does have a considerable effect.
 
