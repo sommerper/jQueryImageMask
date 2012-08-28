@@ -10,12 +10,21 @@ By adding a "data-mask" attribute to an img tag with a reference to an image tha
 \<img src="path-to-main-image.jpg" data-mask="path-to-mask-image.jpg">
 </code>
 
-Then run the plugin:
+Then run the plugin to find all images with the "masked" class:
 
 <code>
 $(document).ready(function ()
 {
-	$(".container").imageMask();
+	$(".masked").imageMask();
+});
+</code>
+
+Or just apply it to one specific element:
+
+<code>
+$(document).ready(function ()
+{
+	$("#masked").imageMask();
 });
 </code>
 
