@@ -23,9 +23,25 @@
 	{
 		$(this.element).find("img[data-mask]").each(function (i, ele)
 		{
-			var imgNormal = new Image();
-			var imgAlpha = new Image();
-			createImgageAlpha(ele, imgNormal, imgAlpha);
+			// Preserve the original image
+			$(ele).attr("data-src", $(ele).attr("src"));
+
+			// Check if canvas is available
+			if (getBrowser().canvas)
+			{
+				var imgNormal = new Image();
+				var imgAlpha = new Image();
+				createImgageAlpha(ele, imgNormal, imgAlpha);
+			}
+			else
+			{
+				// If canvas is not available see if fallback is defined.
+				var attrFallback = $(this).attr('data-mask-fallback');
+				if (typeof attrFallback !== 'undefined' && attrFallback !== false)
+				{
+					$(ele).attr("src", $(ele).attr("data-mask-fallback"));
+				}
+			}
 		});
 	};
 
@@ -106,13 +122,48 @@
 		ctx.putImageData(imgdNormal, 0, 0);
 		var dataUrl = can.toDataURL();
 
-		$(ele).replaceWith("<img src='" + dataUrl + "'/>");
+		//$(ele).replaceWith("<img src='" + dataUrl + "'/>");
+		$(ele).attr("src", dataUrl);
 
 		can = null;
 		canAlpha = null;
 		canNormal = null;
 		normalImage = null;
 		alphaImage = null;
+	}
+
+	var getBrowser = function ()
+	{
+		function testCSS (prop)
+		{
+			return prop in document.documentElement.style;
+		}
+
+		function hasCanvas ()
+		{
+			var elem = document.createElement('canvas');
+			return !!(elem.getContext && elem.getContext('2d'));
+		}
+
+		function browserInfo ()
+		{
+			return {
+				ff:testCSS('MozBoxSizing'),
+				ie:/*@cc_on!@*/false || testCSS('msTransform'), // At least IE6
+				ie6:!window.XMLHttpRequest,
+				ie7:document.all && window.XMLHttpRequest && !XDomainRequest && !window.opera,
+				ie8:document.documentMode == 8,
+				opera:!!(window.opera && window.opera.version),
+				safari:Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0,
+				chrome:!(Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0) && testCSS('WebkitTransform'),
+				webkit:testCSS('WebkitTransform'),
+				canvas:hasCanvas()
+			};
+		}
+
+		;
+
+		return browserInfo();
 	}
 
 }(jQuery, window));
