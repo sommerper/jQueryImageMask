@@ -27,7 +27,7 @@
 			$(ele).attr("data-mask-src", $(ele).attr("src"));
 
 			// Check if canvas is available
-			if (getBrowser().canvas)
+			if (getBrowserInfo().canvas)
 			{
 				var imgNormal = new Image();
 				var imgAlpha = new Image();
@@ -132,7 +132,7 @@
 		alphaImage = null;
 	}
 
-	var getBrowser = function ()
+	var getBrowserInfo = function ()
 	{
 		function testCSS (prop)
 		{
@@ -160,8 +160,6 @@
 				canvas:hasCanvas()
 			};
 		}
-
-		;
 
 		return browserInfo();
 	}
