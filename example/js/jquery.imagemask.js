@@ -24,7 +24,7 @@
 		$(this.element).each(function (i, ele)
 		{
 			// Preserve the original image
-			$(ele).attr("data-src", $(ele).attr("src"));
+			$(ele).attr("data-mask-src", $(ele).attr("src"));
 
 			// Check if canvas is available
 			if (getBrowser().canvas)
