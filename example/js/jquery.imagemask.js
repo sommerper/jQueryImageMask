@@ -122,7 +122,6 @@
 		ctx.putImageData(imgdNormal, 0, 0);
 		var dataUrl = can.toDataURL();
 
-		//$(ele).replaceWith("<img src='" + dataUrl + "'/>");
 		$(ele).attr("src", dataUrl);
 
 		can = null;
