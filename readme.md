@@ -19,7 +19,7 @@ $(document).ready(function ()
 });
 </code>
 
-Or just apply it to one specific element:
+Or just apply it to a specific element:
 
 <code>
 $(document).ready(function ()
@@ -27,8 +27,6 @@ $(document).ready(function ()
 	$("#masked").imageMask();
 });
 </code>
-
-and it will find all images with a data-mask attribute in the image container.
 
 It combines the two images using canvas and replaces the original image with the generated one.
 
