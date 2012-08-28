@@ -21,7 +21,7 @@
 
 	Plugin.prototype.init = function ()
 	{
-		$(this.element).find("img[data-mask]").each(function (i, ele)
+		$(this.element).each(function (i, ele)
 		{
 			// Preserve the original image
 			$(ele).attr("data-src", $(ele).attr("src"));

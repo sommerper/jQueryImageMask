@@ -57,26 +57,26 @@
 		<h1>Photo + mask</h1>
 		<p>Notice that the mask and the black area around the dog are not identical. The black area has been contracted with 10 pixels to achive better blending quality while optimizing file size.</p>
 		<div class="container">
-			<img src="images/molly_low.jpg"/>
-			<img src="images/molly_mask.jpg"/>
+			<img class="masked" src="images/molly_low.jpg"/>
+			<img class="masked" src="images/molly_mask.jpg"/>
 			
 		</div>
 		<h1>PNG with transparency + JPG with applied mask.</h1>
 		<p>PNG with transparency (708 kb). JPG with Low compression rate (32kb) and mask with High compression rate (21 kb) applied (combined 53kb) result in 7% of the PNG file size.</p>
 		<div class="container grad" style="width:1500px;">
 			<img src="images/molly.png"/>
-			<img src="images/molly_low.jpg" data-mask="images/molly_mask.jpg"/>
+			<img class="masked" src="images/molly_low.jpg" data-mask="images/molly_mask.jpg"/>
 		</div>
 		<h1>PNG with transparency + JPG with applied GIF mask.</h1>
 		<p>Using a 4 color GIF as mask instead a JPG (combined 39kb) and we're down to 5% of the original file size.</p>
 		<div class="container grad" style="width:1500px;">
 			<img src="images/molly.png"/>
-			<img src="images/molly_low.jpg" data-mask="images/molly_mask.gif"/>
+			<img class="masked" src="images/molly_low.jpg" data-mask="images/molly_mask.gif"/>
 		</div>
 		<h1>Adding a fallback image for browsers that don't support canvas</h1>
-		<p>In this case using a dithered 16 color gif</p>
+		<p>In this case using a dithered 16 color gif (you will only see this in unsupported browsers).</p>
 		<div class="container grad" style="width:700px;">
-			<img src="images/molly_low.jpg" data-mask="images/molly_mask.gif" data-mask-fallback="images/molly_fallback.gif"/>
+			<img class="masked" src="images/molly_low.jpg" data-mask="images/molly_mask.gif" data-mask-fallback="images/molly_fallback.gif"/>
 		</div>
 	</body>
 </html>
