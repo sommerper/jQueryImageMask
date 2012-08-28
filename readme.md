@@ -5,9 +5,9 @@ ImageMask makes it possible to get Flash like image compression with alpha/trans
 ## How it works
 
 By adding a "data-mask" attribute to an img tag with a reference to an image that contains the mask will mask the src image.
-
+For browser that do not support canvas it's possible to add a fallback image with "data-mask-fallback".
 <code>
-\<img src="path-to-main-image.jpg" data-mask="path-to-mask-image.jpg">
+\<img src="path-to-main-image.jpg" data-mask="path-to-mask-image.jpg" data-mask-fallback="path-to-mask-image.gif">
 </code>
 
 Then run the plugin to find all images with the "masked" class:
